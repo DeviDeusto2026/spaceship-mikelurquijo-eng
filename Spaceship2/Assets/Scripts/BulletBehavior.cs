@@ -3,7 +3,8 @@ using UnityEngine;
 public class BulletBehavior : MonoBehaviour
 {
 
-    public float lifeTime;
+    public GameObject bullet;
+    public float lifeTime = 2.0f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -13,19 +14,11 @@ public class BulletBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        lifeTime -= Time.deltaTime;
-        if (lifeTime < 0)
-        {
-            Destroy(this.gameObject);
-        }
+        Destroy(bullet, lifeTime);
     }
 
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
-    //    {
-    //        Destroy(collision.gameObject);
-    //        Destroy(this.gameObject);
-    //    }
-    //}
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(bullet);
+    }
 }
