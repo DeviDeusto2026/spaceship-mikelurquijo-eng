@@ -1,26 +1,27 @@
 using UnityEngine;
 
-public class BulletBehavior : MonoBehaviour
+public class EnemyBulletBehaviour : MonoBehaviour
 {
 
-    public float lifeTime;
+    public float lifeTime = 3.0f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         lifeTime -= Time.deltaTime;
-        if (lifeTime < 0) {
+        if (lifeTime < 0) { 
             Destroy(this.gameObject);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        Destroy(other.gameObject);
         Destroy(this.gameObject);
     }
 }

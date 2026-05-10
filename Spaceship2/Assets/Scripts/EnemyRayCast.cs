@@ -1,27 +1,35 @@
 using UnityEngine;
 
-public class RayCast : MonoBehaviour
+public class EnemyRayCast : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public GameObject bullet;
-    public float force;
 
+    public GameObject enemyBullet;
+    public float force;
+    public float spawnTime = 3.0f;
+
+    private bool flag = true;
     private Quaternion q;
     private RaycastHit hit;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        q = new Quaternion(0, 0, 0, 0);
 
+        q = new Quaternion(0, 0, 0, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            GameObject newBullet = Object.Instantiate(bullet, transform.position + Vector3.forward, q);
+        spawnTime -= Time.deltaTime;
+        if (spawnTime <= 0) {
+            GameObject newBullet = Object.Instantiate(enemyBullet, transform.position + Vector3.forward, q);
             newBullet.GetComponent<Rigidbody>().AddForce(this.transform.forward * force);
+            flag = false;
+        }
+
+        if (flag == false) {
+            flag = !flag;
+            spawnTime = 3.0f;
         }
     }
 
@@ -44,5 +52,4 @@ public class RayCast : MonoBehaviour
         }
 
     }
-
 }

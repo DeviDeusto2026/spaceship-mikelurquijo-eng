@@ -445,6 +445,8 @@ GameObject:
   - component: {fileID: 109148551}
   - component: {fileID: 109148550}
   - component: {fileID: 109148554}
+  - component: {fileID: 109148556}
+  - component: {fileID: 109148555}
   m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
@@ -539,7 +541,7 @@ Transform:
   m_GameObject: {fileID: 109148548}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.11508, y: 498.2957, z: -587.2}
+  m_LocalPosition: {x: 0.11507999, y: 498.2957, z: -575.24}
   m_LocalScale: {x: 14.104591, y: 14.104591, z: 1.2571987}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -557,6 +559,69 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50393e4263f037841ba800f834e5b3e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Lifes
+--- !u!114 &109148555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109148548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5df415f14cdb984d8eb27b25f551f8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyRayCast
+  enemyBullet: {fileID: 115457470}
+  force: 1500
+  spawnTime: 3
+--- !u!114 &109148556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109148548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f7a39ed7bc9f66418a2054c1584f274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemiesBehaviour
+  speed: 3
+  sppedZ: 6
+  timePassed: 4
+  timePassedZ: 2
+--- !u!1 &115457470 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6153411967463748407, guid: ee7cb0ad2ab9c644da21ea9a83647f88, type: 3}
+  m_PrefabInstance: {fileID: 2793192014168698836}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &115457475
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115457470}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 4
+  m_CollisionDetection: 0
 --- !u!4 &131269736 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4030326048459444, guid: 7e4bfb3c6ba1d4bc4ba31d585abdae0f, type: 3}
@@ -2056,6 +2121,7 @@ GameObject:
   - component: {fileID: 602137623}
   - component: {fileID: 602137622}
   - component: {fileID: 602137624}
+  - component: {fileID: 602137625}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -2104,8 +2170,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7d9a8a8ff9768748a262216dd3f85b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletBehavior
-  bullet: {fileID: 660694491}
   lifeTime: 2
+--- !u!114 &602137625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602137621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69011c7846c03b24d8fc76b016c1d0a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyBulletBehaviour
+  lifeTime: 20
 --- !u!1 &660694491 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5421428312949017871, guid: 2b3d81b0b7dec56438ba88f0e08d0ecc, type: 3}
@@ -3581,6 +3659,66 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4201d402613a4464b35c805dafcca62, type: 3}
+--- !u!1001 &2793192014168698836
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3522978271031307989, guid: ee7cb0ad2ab9c644da21ea9a83647f88, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 3522978271031307989, guid: ee7cb0ad2ab9c644da21ea9a83647f88, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 501.01315
+      objectReference: {fileID: 0}
+    - target: {fileID: 3522978271031307989, guid: ee7cb0ad2ab9c644da21ea9a83647f88, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -580.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 3522978271031307989, guid: ee7cb0ad2ab9c644da21ea9a83647f88, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3522978271031307989, guid: ee7cb0ad2ab9c644da21ea9a83647f88, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3522978271031307989, guid: ee7cb0ad2ab9c644da21ea9a83647f88, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3522978271031307989, guid: ee7cb0ad2ab9c644da21ea9a83647f88, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3522978271031307989, guid: ee7cb0ad2ab9c644da21ea9a83647f88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3522978271031307989, guid: ee7cb0ad2ab9c644da21ea9a83647f88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3522978271031307989, guid: ee7cb0ad2ab9c644da21ea9a83647f88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6153411967463748407, guid: ee7cb0ad2ab9c644da21ea9a83647f88, type: 3}
+      propertyPath: m_Name
+      value: EnemyBullet
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6153411967463748407, guid: ee7cb0ad2ab9c644da21ea9a83647f88, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 115457475}
+  m_SourcePrefab: {fileID: 100100000, guid: ee7cb0ad2ab9c644da21ea9a83647f88, type: 3}
 --- !u!1001 &4406502995957090366
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3654,3 +3792,4 @@ SceneRoots:
   - {fileID: 4406502995957090366}
   - {fileID: 109148553}
   - {fileID: 602137623}
+  - {fileID: 2793192014168698836}
