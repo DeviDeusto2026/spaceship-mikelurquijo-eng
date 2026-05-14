@@ -32,15 +32,15 @@ public class RayCast : MonoBehaviour
 
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(this.transform.forward), out hit, Mathf.Infinity, layerMask))
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
-            Debug.Log("Did hit" + hit.collider.gameObject.name);
+            Debug.DrawRay(transform.position, transform.TransformDirection(this.transform.forward) * hit.distance, Color.red);
+            //Debug.Log("Did hit" + hit.collider.gameObject.name);
         }
         else
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
-            Debug.Log("not hitting");
+            //Debug.Log("not hitting");
         }
 
     }

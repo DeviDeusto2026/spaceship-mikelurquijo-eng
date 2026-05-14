@@ -22,7 +22,7 @@ public class EnemyRayCast : MonoBehaviour
     {
         spawnTime -= Time.deltaTime;
         if (spawnTime <= 0) {
-            GameObject newBullet = Object.Instantiate(enemyBullet, transform.position + Vector3.forward, q);
+            GameObject newBullet = Object.Instantiate(enemyBullet, transform.position + this.transform.forward, q);
             newBullet.GetComponent<Rigidbody>().AddForce(this.transform.forward * force);
             flag = false;
         }
@@ -40,15 +40,15 @@ public class EnemyRayCast : MonoBehaviour
 
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(this.transform.forward), out hit, Mathf.Infinity, layerMask))
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
-            Debug.Log("Did hit" + hit.collider.gameObject.name);
+            Debug.DrawRay(transform.position, transform.TransformDirection(this.transform.forward) * hit.distance, Color.red);
+            //Debug.Log("Did hit" + hit.collider.gameObject.name);
         }
         else
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
-            Debug.Log("not hitting");
+            Debug.DrawRay(transform.position, transform.TransformDirection(this.transform.forward) * 1000, Color.white);
+            //Debug.Log("not hitting");
         }
 
     }

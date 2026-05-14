@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyBulletBehaviour : MonoBehaviour
 {
 
-    public float lifeTime = 3.0f;
+    public float lifeTime;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,7 +21,6 @@ public class EnemyBulletBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(other.gameObject);
         Destroy(this.gameObject);
     }
 }
